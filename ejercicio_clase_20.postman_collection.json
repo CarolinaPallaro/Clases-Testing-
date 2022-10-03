@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "7cb907c3-141d-4535-bdbb-b4caf14a46fb",
+		"name": "ejercicio clase 20",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23358200"
+	},
+	"item": [
+		{
+			"name": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/314",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Prueba del estado\", function(){\r",
+							"   pm.expect(pm.response.json().status).to.equal(\"new\");\r",
+							"\r",
+							"\r",
+							"})\r",
+							"pm.test(\"Prueba del ID\", function(){ \r",
+							"    pm.expect(pm.response.json().id).to.equal(314);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Prueba del Valor\", function(){ \r",
+							" pm.expect(pm.response.json().amount).to.equal(0);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEiLCJpZCI6NTUsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzE5NjgyMH0.ZLvD5HBe7CIqGVRHGB6B1pHjhzja4ZMcqD_vfukgSPU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/314",
+					"protocol": "https",
+					"host": [
+						"ctd-testing-resto-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"314"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ctd-testing-resto-api.herokuapp.com/v1/orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Prueba\", function(){\r",
+							"  pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEiLCJpZCI6NTUsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzE5NjgyMH0.ZLvD5HBe7CIqGVRHGB6B1pHjhzja4ZMcqD_vfukgSPU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders",
+					"protocol": "https",
+					"host": [
+						"ctd-testing-resto-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/999",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEiLCJpZCI6NTUsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzE5NjgyMH0.ZLvD5HBe7CIqGVRHGB6B1pHjhzja4ZMcqD_vfukgSPU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/999",
+					"protocol": "https",
+					"host": [
+						"ctd-testing-resto-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

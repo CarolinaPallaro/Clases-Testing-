@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "f689012b-6491-4a60-bc54-04d82b89b728",
+		"name": "Comidas Ya!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login+Registro",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"melisaadmin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/users/login",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login usuario inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"El usuario no existe\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"melisaadminn\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/users/login",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login contraseña incorrecta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Contraseña incorrecta\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"melisaadmin\",\n    \"password\": \"admin1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/users/login",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"user\",\n  \"lastName\": \"test\",\n  \"password\": \"test\",\n  \"email\": \"test@gmail.com\",\n  \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/users",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro usuario ya existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que el usuario ya existe\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"El usuario ya se encuentra registrado\");",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"user\",\n  \"lastName\": \"test\",\n  \"password\": \"test\",\n  \"email\": \"test@gmail.com\",\n  \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/users",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Obtener productos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar uno de los productos del Array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var lastposition = jsonData.length-1;",
+									"    pm.expect(jsonData[lastposition].name).to.equal(\"Tarta de Jamon y Queso\");",
+									"    pm.expect(jsonData[lastposition].price).to.equal(100);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/products",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que se retorna el producto creado\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.equal(\"Double-burger\");",
+									"    pm.expect(jsonData.price).to.equal(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Double-burger\",\n  \"photo\": \"https://picsum.photos/200\",\n  \"price\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/products",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que se edito el precio del producto\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.price).to.equal(550);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"price\": 550\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/products/95",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"products",
+								"95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que el producto se elimino\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Producto eliminado satisfactoriamente\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/products/54",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"products",
+								"54"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordenes",
+			"item": [
+				{
+					"name": "Obtener ordenes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Validar uno de los productos del Array- Ultima orden creada\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var lastposition = jsonData.length-1;",
+									"    pm.expect(jsonData[lastposition].description).to.equal(\"2xPapas 2xpizza \");",
+									"    pm.expect(jsonData[lastposition].amount).to.equal(11006);",
+									"    pm.expect(jsonData[lastposition].products[0].productId).to.equal(27);",
+									"    pm.expect(jsonData[lastposition].products[1].productId).to.equal(13);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear orden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que se retorna la orden creada\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.equal(\"Nueva orden de hamburguesa\");",
+									"    pm.expect(jsonData.status).to.equal(\"new\");",
+									"    pm.expect(jsonData.amount).to.equal(11006);",
+									"    pm.expect(jsonData.products[0].productId).to.equal(27);",
+									"    pm.expect(jsonData.products[1].productId).to.equal(13);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"description\": \"Nueva orden de hamburguesa\",\n        \"paymentMethod\": \"cash\",\n        \"userId\": 521,\n        \"createdAt\": \"2021-12-14T02:41:08.000Z\",\n        \"products\": [\n            {\n                \"id\": 338,\n                \"orderId\": 512,\n                \"productId\": 27,\n                \"quantity\": 2,\n                \"createdAt\": \"2021-12-14T02:41:08.012Z\"\n            },\n            {\n                \"id\": 339,\n                \"orderId\": 512,\n                \"productId\": 13,\n                \"quantity\": 2,\n                \"createdAt\": \"2021-12-14T02:41:08.012Z\"\n            }\n        ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar orden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que se edito el metodo de pago de la orden\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.paymentMethod).to.equal(\"credit\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \n        \"paymentMethod\": \"credit\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/541",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"orders",
+								"541"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar orden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 900ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(900);",
+									"});",
+									"",
+									"pm.test(\"Validar que el producto se elimino\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Orden eliminada satisfactoriamente\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lbGlzYWFkbWluIiwiaWQiOjU3NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ1MzIwMzQxfQ.sU9RetTS9C_8hHzY6cNuD0E2tHWuynTFbKESkjVgQLI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://ctd-testing-resto-api.herokuapp.com/v1/orders/514",
+							"protocol": "https",
+							"host": [
+								"ctd-testing-resto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"v1",
+								"orders",
+								"514"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
